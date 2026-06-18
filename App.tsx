@@ -5,8 +5,14 @@ import HomeScreen from './src/HomeScreen'
 
 export default function App() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={style.root}>
       <HomeScreen />
     </SafeAreaView>
   )
 }
+
+const style = StyleSheet.create({
+  root: {
+    flex: 1
+  }
+})

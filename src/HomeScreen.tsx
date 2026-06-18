@@ -1,38 +1,76 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
+const animals = [
+    {
+        uid: 1,
+        title: 'Dogs',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
+    },
+    {
+        uid: 2,
+        title: 'Cats',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
+    },
+    {
+        uid: 3,
+        title: 'Rabbits',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
+    },
+    {
+        uid: 4,
+        title: 'Ponies',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYlb0SA_aR3OBL_kpDFR6A6RqFTffFeg0c94Qf_VSIXis5MbEf9jV07DY&s=10',
+    },
+    {
+        uid: 5,
+        title: 'Calves',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10'
+    }
+];
+
+const pets = [
+    {
+        uid: 1,
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
+        title: 'Puppy Max',
+        location: 'New-York, USA',
+        price: 200
+    },
+    {
+        uid: 2,
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
+        title: 'Cat Chip',
+        location: 'New-York, USA',
+        price: 180
+    },
+    {
+        uid: 3,
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
+        title: 'Puppy Max',
+        location: 'New-York, USA',
+        price: 200
+    },
+    {
+        uid: 4,
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
+        title: 'Cat Chip',
+        location: 'New-York, USA',
+        price: 180
+    },
+    {
+        uid: 5,
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
+        title: 'Puppy Max',
+        location: 'New-York, USA',
+        price: 200,
+    }
+]
+
 export default function HomeScreen() {
 
-    const animals = [
-        {
-            uid: 1,
-            title: 'Dogs',
-            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-        },
-        {
-            uid: 2,
-            title: 'Cats',
-            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-        },
-        {
-            uid: 3,
-            title: 'Rabbits',
-            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-        },
-        {
-            uid: 4,
-            title: 'Ponies',
-            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYlb0SA_aR3OBL_kpDFR6A6RqFTffFeg0c94Qf_VSIXis5MbEf9jV07DY&s=10',
-        },
-        {
-            uid: 5,
-            title: 'Calves',
-            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10'
-        }
-    ]
-
     return (
-        <View style={styles.bodyBg}>
+        <ScrollView style={styles.bodyBg}>
             <View style={[styles.container, styles.header]}>
                 <View>
                     <Text style={styles.userGreeting}>Welcome back,</Text>
@@ -54,7 +92,8 @@ export default function HomeScreen() {
                     showsHorizontalScrollIndicator={false}
                 >
                     {animals.map(({ uid, title, imageUrl }) => (
-                        <View key={uid}>
+                        <View key={uid}
+                            style={{ alignItems: 'center' }}>
                             <Image source={{ uri: imageUrl }} style={styles.circularCards} />
                             <Text style={styles.ccText}>{title}</Text>
                         </View>
@@ -63,15 +102,21 @@ export default function HomeScreen() {
             </View>
             <View style={styles.container}>
                 <View style={styles.forYouSeeAll}>
-                    {/* <Text>For You</Text> */}
-                    {/* <Text>See all</Text> */}
+                    <Text style={{ fontSize: 24, fontWeight: '800' }}>For You</Text>
+                    <Text style={{ fontSize: 18 }}>See all</Text>
                 </View>
-                <ScrollView >
-                    {/* style={styles.squareCards} */}
-                    // list/array with image cards here
+                <ScrollView contentContainerStyle={styles.twoColumn}>
+                    {pets.map(({ uid, imageUrl, title, location, price }) => (
+                        <View key={uid} style={{ margin: 8 }}>
+                            <Image source={{ uri: imageUrl }} style={styles.squareCards} />
+                            <Text style={styles.scTextTitle}>{title}</Text>
+                            <Text style={styles.scTextLocation}>{location}</Text>
+                            <Text style={styles.scTextAmt}>${price}</Text>
+                        </View>
+                    ))}
                 </ScrollView>
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
@@ -133,6 +178,7 @@ const styles = StyleSheet.create({
         width: 150,
         borderRadius: 12,
         backgroundColor: 'pink',
+        margin: 8,
     },
     scTextTitle: {
         fontSize: 12,
@@ -152,6 +198,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        paddingHorizontal: 8,
     },
-
+    twoColumn: {
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    }
 });
