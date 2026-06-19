@@ -1,207 +1,121 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-
-const animals = [
-    {
-        uid: 1,
-        title: 'Dogs',
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-    },
-    {
-        uid: 2,
-        title: 'Cats',
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-    },
-    {
-        uid: 3,
-        title: 'Rabbits',
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-    },
-    {
-        uid: 4,
-        title: 'Ponies',
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYlb0SA_aR3OBL_kpDFR6A6RqFTffFeg0c94Qf_VSIXis5MbEf9jV07DY&s=10',
-    },
-    {
-        uid: 5,
-        title: 'Calves',
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10'
-    }
-];
-
-const pets = [
-    {
-        uid: 1,
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-        title: 'Puppy Max',
-        location: 'New-York, USA',
-        price: 200
-    },
-    {
-        uid: 2,
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-        title: 'Cat Chip',
-        location: 'New-York, USA',
-        price: 180
-    },
-    {
-        uid: 3,
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-        title: 'Puppy Max',
-        location: 'New-York, USA',
-        price: 200
-    },
-    {
-        uid: 4,
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-        title: 'Cat Chip',
-        location: 'New-York, USA',
-        price: 180
-    },
-    {
-        uid: 5,
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4Vi3ji0PkDAmLiBG8BWkCgbycRaoUjXhVHqZE_mD6VY-nS2tTRnGszM&s=10',
-        title: 'Puppy Max',
-        location: 'New-York, USA',
-        price: 200,
-    }
-]
+import { pets } from './pets';
+import { animals } from './animals';
+import PetCard from './components/PetCard';
+import { colors, fonts } from './theme';
 
 export default function HomeScreen() {
-
     return (
-        <ScrollView style={styles.bodyBg}>
-            <View style={[styles.container, styles.header]}>
+        <ScrollView style={styles.container}>
+            <View style={styles.header}>
                 <View>
                     <Text style={styles.userGreeting}>Welcome back,</Text>
                     <Text style={styles.userName}>Sara Smith</Text>
                 </View>
                 <Image
                     source={{
-                        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQluEPXA7Bd2lNT-PNk2OzvOYTUDFYweJ6Fm6CBmDLD6g&s',
+                        uri: 'https://img.magnific.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?semt=ais_hybrid&w=740&q=80',
                     }}
                     style={styles.userImage}
                 />
             </View>
-            <View style={[styles.container, styles.searchBox]}>
+            <View style={styles.searchBox}>
                 <Text style={styles.search}>Search here</Text>
             </View>
-            <View style={styles.container}>
-                <ScrollView
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                >
-                    {animals.map(({ uid, title, imageUrl }) => (
-                        <View key={uid}
-                            style={{ alignItems: 'center' }}>
-                            <Image source={{ uri: imageUrl }} style={styles.circularCards} />
-                            <Text style={styles.ccText}>{title}</Text>
-                        </View>
-                    ))}
-                </ScrollView>
+            <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+            >
+                {animals.map(({ uid, title, imageUrl }) => (
+                    <View key={uid}
+                        style={styles.circularCardsView}>
+                        <Image source={{ uri: imageUrl }} style={styles.circularCards} />
+                        <Text style={styles.circularCardsText}>{title}</Text>
+                    </View>
+                ))}
+            </ScrollView>
+            <View style={styles.sectionHeader}>
+                <Text style={styles.sectionTitle}>For You</Text>
+                <Text style={styles.sectionLink}>See all</Text>
             </View>
-            <View style={styles.container}>
-                <View style={styles.forYouSeeAll}>
-                    <Text style={{ fontSize: 24, fontWeight: '800' }}>For You</Text>
-                    <Text style={{ fontSize: 18 }}>See all</Text>
-                </View>
-                <ScrollView contentContainerStyle={styles.twoColumn}>
-                    {pets.map(({ uid, imageUrl, title, location, price }) => (
-                        <View key={uid} style={{ margin: 8 }}>
-                            <Image source={{ uri: imageUrl }} style={styles.squareCards} />
-                            <Text style={styles.scTextTitle}>{title}</Text>
-                            <Text style={styles.scTextLocation}>{location}</Text>
-                            <Text style={styles.scTextAmt}>${price}</Text>
-                        </View>
-                    ))}
-                </ScrollView>
-            </View>
+            <ScrollView contentContainerStyle={styles.petGrid}>
+                {pets.map((pet) => (
+                    <PetCard key={pet.uid} {...pet} />
+                ))}
+            </ScrollView>
         </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    bodyBg: {
-        backgroundColor: 'white',
-        // padding: 8,
-    },
     container: {
-        padding: 8,
-        // marginTop: 8,
-        // backgroundColor: 'blue',
+        backgroundColor: colors.background,
+        padding: 12,
     },
     header: {
-        // flex: 1,
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
-        // alignItems: 'flex-start',
-        // backgroundColor: 'red',
         marginTop: 20,
+        marginBottom: 20,
     },
     userGreeting: {
-        fontSize: 24,
+        fontSize: fonts.fontSizeMedium,
     },
     userName: {
-        fontSize: 24,
-        fontWeight: '800',
+        fontSize: fonts.fontSizeLarge,
+        fontWeight: fonts.fontBold,
     },
     userImage: {
-        height: 100,
-        width: 100,
-        borderRadius: 100 / 2,
+        height: 60,
+        width: 60,
+        borderRadius: 60 / 2,
+        marginRight: 8,
     },
     searchBox: {
-        backgroundColor: 'grey',
+        backgroundColor: colors.backgroundGrey,
         borderRadius: 25,
-        margin: 12
+        marginBottom: 20,
+        marginRight: 8,
     },
     search: {
-        color: 'white',
-        fontSize: 20,
+        color: colors.textTertiary,
+        fontSize: fonts.fontSizeMedium,
         paddingHorizontal: 24,
-        paddingVertical: 4,
+        paddingVertical: 12,
+    },
+    circularCardsView: {
+        alignItems: 'center'
     },
     circularCards: {
-        height: 150,
-        width: 150,
-        borderRadius: 150 / 2,
-        backgroundColor: 'pink',
+        height: 120,
+        width: 120,
+        borderRadius: 120 / 2,
         marginLeft: 8,
     },
-    ccText: {
-        fontSize: 24,
-        fontWeight: '300',
-        color: '#000',
+    circularCardsText: {
+        fontSize: fonts.fontSizeMedium,
+        fontWeight: fonts.fontNormal,
+        color: colors.textPrimary,
     },
-    squareCards: {
-        height: 150,
-        width: 150,
-        borderRadius: 12,
-        backgroundColor: 'pink',
-        margin: 8,
+    sectionTitle: {
+        fontSize: fonts.fontSizeLarge,
+        fontWeight: fonts.fontBold
     },
-    scTextTitle: {
-        fontSize: 12,
-        fontWeight: '800',
-        color: '#000',
+    sectionLink: {
+        fontSize: fonts.fontSizeMedium
     },
-    scTextLocation: {
-        fontSize: 12,
-        color: 'grey'
-    },
-    scTextAmt: {
-        fontSize: 12,
-        color: '#000',
-    },
-    forYouSeeAll: {
-        // flex: 1,
+    sectionHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: 8,
+        marginRight: 8,
+        marginTop: 12,
+        marginBottom: 12,
     },
-    twoColumn: {
+    petGrid: {
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
     }
 });
