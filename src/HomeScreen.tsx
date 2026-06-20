@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginTop: 20,
-        marginBottom: 20,
+        marginVertical: 20,
+        marginHorizontal: 8,
     },
     userGreeting: {
         fontSize: fonts.fontSizeMedium,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.backgroundGrey,
         borderRadius: 25,
         marginBottom: 20,
-        marginRight: 8,
+        marginHorizontal: 8,
     },
     search: {
         color: colors.textTertiary,
@@ -89,10 +89,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     circularCards: {
-        height: 120,
-        width: 120,
-        borderRadius: 120 / 2,
-        marginLeft: 8,
+        height: 140,
+        width: 140,
+        borderRadius: 140 / 2,
+        marginHorizontal: 8,
     },
     circularCardsText: {
         fontSize: fonts.fontSizeMedium,
@@ -110,12 +110,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginRight: 8,
-        marginTop: 12,
-        marginBottom: 12,
+        marginHorizontal: 8,
+        marginVertical: 12
     },
     petGrid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
+        gap: 8,
     }
 });
